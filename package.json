@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "debug": "yarn ng:serve && tsc && electron . --serve",
+    "ng:serve": "ng serve",
+    "tsc": "tsc --build tsconfig.main.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "main": "app/main.js",
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.1.0",
@@ -27,6 +30,7 @@
     "@angular/cli": "~15.1.6",
     "@angular/compiler-cli": "^15.1.0",
     "@types/jasmine": "~4.3.0",
+    "@types/node": "^18.14.0",
     "electron": "^23.1.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
