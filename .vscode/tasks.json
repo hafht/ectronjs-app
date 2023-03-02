@@ -72,7 +72,7 @@
       "label": "angular_serve",
       "isBackground": true,
       "type": "shell",
-      "command": "yarn ng serve",
+      "command": "yarn serve",
       "group": {
         "kind": "build",
         "isDefault": true

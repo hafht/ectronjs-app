@@ -1,5 +1,6 @@
 import { HeroService } from '@services/hero.service';
 import {AfterViewInit, Component} from '@angular/core';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent implements AfterViewInit{
   }
 
   ngAfterViewInit() {
-    console.log('heheh')
+    console.log(environment.api);
+
   }
 }

@@ -2,13 +2,13 @@
   "name": "electronjs-app",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "debug": "yarn ng:serve && tsc && electron . --serve",
-    "ng:serve": "ng serve",
+    "serve": "ng serve",
+    "renew-aws-session": "aws codeartifact login --tool npm --repository creativeforce --domain creativeforce --domain-owner 092392787187 --namespace @creative-force",
+    "postinstall": "electron-builder install-app-deps",
     "tsc": "tsc --build tsconfig.main.json",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "rimraf": "rimraf",
+    "builder": "cd ../../lighthouseapp/builder && node index.js --app=kelvin",
+    "publish-netcore-services": "yarn builder --action=publish-netcore-services --env=prod"
   },
   "main": "app/main.js",
   "private": true,

@@ -1,22 +1,30 @@
-import { loadingBrowser } from './main/windows/LoadingBrowser';
 import {app, BrowserWindow} from 'electron';
+import { loadingBrowser, mainBrowser } from './main/windows';
 
 
 
 
 app.whenReady().then(() => {
-  //Todo: check isSecondInstance
+  //TODO: check isSecondInstance
 
   // Load loading browser
   loadingBrowser.createWindow(async () => {
-    console.log('on ready');
+    // : send tracking
+    try {
+      //TODO: start up
+      mainBrowser.createWindow(() => {
+        loadingBrowser?.win?.destroy();
+      })
+    } catch (error) {
+
+    }
   });
 
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      // Todo: load main browser
+      // TODO: load main browser
     }
   })
 })
