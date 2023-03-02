@@ -7,31 +7,47 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {},
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "src",
       "sourceRoot": "src/renderer",
-      "prefix": "app",
+      "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "./webpack.config.js"
+            },
             "outputPath": "app/renderer",
             "index": "src/renderer/index.html",
             "main": "src/renderer/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/renderer/favicon.ico",
-              "src/renderer/assets"
-            ],
-            "styles": [
-              "src/renderer/styles.scss"
-            ],
+            "assets": ["src/renderer/favicon.ico", "src/renderer/assets"],
+            "styles": ["src/renderer/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -48,7 +64,14 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
             },
             "development": {
               "buildOptimizer": false,
@@ -69,6 +92,9 @@
         },
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "electronjs-app:build:development"
+          },
           "configurations": {
             "production": {
               "browserTarget": "electronjs-app:build:production"
@@ -88,19 +114,11 @@
         "test": {
           "builder": "@angular-builders/custom-webpack:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/renderer/favicon.ico",
-              "src/renderer/assets"
-            ],
-            "styles": [
-              "src/renderer/styles.scss"
-            ],
+            "assets": ["src/renderer/favicon.ico", "src/renderer/assets"],
+            "styles": ["src/renderer/styles.scss"],
             "scripts": []
           }
         }
