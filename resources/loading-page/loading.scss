@@ -1,0 +1,289 @@
+/*! minireset.css v0.0.4 | MIT License | github.com/jgthms/minireset.css */
+// Blocks
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin : 0;
+  padding: 0;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size  : 100%;
+  font-weight: normal;
+}
+
+// List
+ul {
+  list-style: none;
+}
+
+// Form
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+
+// Box sizing
+html {
+  box-sizing: border-box;
+}
+
+* {
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+// Media
+img,
+embed,
+iframe,
+object,
+video {
+  height   : auto;
+  max-width: 100%;
+}
+
+audio {
+  max-width: 100%;
+}
+
+// Iframe
+iframe {
+  border: 0;
+}
+
+// Table
+table {
+  border-collapse: collapse;
+  border-spacing : 0;
+}
+
+td,
+th {
+  padding: 0;
+
+  &:not([align]) {
+    text-align: left;
+  }
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #4D4D4D;
+  letter-spacing: 0.01em;
+  font-size: 14px;
+  font-weight: normal;
+  cursor: default;
+}
+.login-page {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  background: url(./login-bg.jpg) no-repeat top left;
+  background-size: cover;
+
+  .login-header{
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: space-between;
+    height: 93px;
+    margin: 32px 50px 0 50px;
+    .login-logo{
+      display: inline-flex;
+      align-items: center;
+      svg {
+        height: 70px;
+        width: auto;
+      }
+      img{
+        height:93px;
+        margin-right:12px;
+      }
+      label{
+        width:140px;
+        color:#000;
+        line-height:32px;
+        font-weight: 900;
+        font-size: 38px;
+        letter-spacing: -0.5px;
+      }
+    }
+    .login-app-name{
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 2.47px;
+      font-size:45px;
+      white-space: nowrap;
+      height:57px;
+      border-radius:7.5px;
+      border:3px solid #000;
+      display: inline-flex;
+      align-items: center;
+      padding:0 12px;
+    }
+  }
+  .login-copyright{
+    height:77px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1B1A3D;
+    color:#fff;
+    font-size:13px;
+    line-height:18px;
+    letter-spacing: 0.72px;
+    padding:5px 25px 5px 29px;
+    p:last-of-type{
+      text-align: right;
+    }
+    a{
+      cursor: pointer;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+  .login-content{
+    flex-grow:1;
+    display: flex;
+    justify-content: center;
+
+    .login-submit{
+      align-self: flex-end;
+      margin-bottom:150px;
+      font-family:'Roboto', sans-serif;
+      font-size:21px;
+      letter-spacing: 0.45px;
+      font-weight: 700;
+      color:#000;
+      border:0;
+      border-radius:29.25px;
+      height:58.5px;
+      width:173px;
+      box-shadow:0 0 15px 0 rgba(0,0,0,0.5);
+      background-color: #fff;
+    }
+  }
+	.loading-content{
+		flex-grow:1;
+		padding-left:29px;
+    padding-top: 24vh;
+    .login-app-name {
+      font-size: 112px;
+      color: #fff;
+      padding-left: 7px;
+      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+    }
+    .loading-message {
+      color: #fff;
+      padding-left: 16px;
+    }
+		.app-loading-spinner{
+			margin:20px 0;
+		}
+	}
+}
+
+
+
+.restart-button {
+  border-radius: 4px;
+  min-width: 136px;
+  height:37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3E82FB;
+  border: 1px solid #3E82FB;
+  color: #fff;
+  font-family: 'Montserrat','Roboto', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top:20px;
+}
+
+.restart-button:hover {
+  background-color: #fff;
+  border-color: #FFF;
+  color: #333;
+}
+
+.app-loading-spinner{
+  width:60px;
+  height:60px;
+  overflow:hidden;
+  position: relative;
+  &:before{
+    content: "";
+    border: 4px solid rgba(72, 159, 255, 0.4);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &:after{
+    content: "";
+    border: 4px solid #3E82FB;
+    position: absolute;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    top: 0;
+    left: 0;
+    animation: spin 2s infinite linear;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
