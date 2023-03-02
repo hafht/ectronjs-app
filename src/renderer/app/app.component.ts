@@ -1,3 +1,4 @@
+import { HeroService } from '@services/hero.service';
 import {AfterViewInit, Component} from '@angular/core';
 
 @Component({
@@ -7,6 +8,11 @@ import {AfterViewInit, Component} from '@angular/core';
 })
 export class AppComponent implements AfterViewInit{
   title = 'electronjs-app';
+
+  constructor(
+    public hero: HeroService
+  ) {
+  }
 
   ngAfterViewInit() {
     console.log('heheh')

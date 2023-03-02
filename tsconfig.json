@@ -3,6 +3,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@app/*": ["src/renderer/app/*"],
+      "@services/*": ["src/renderer/app/services/*"]
+    },
     "outDir": "./app",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
