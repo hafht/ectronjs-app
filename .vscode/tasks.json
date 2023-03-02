@@ -1,42 +1,115 @@
 {
-  // For more information, visit: https://go.microsoft.com/fwlink/?LinkId=733558
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
-      "script": "start",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
-          }
-        }
+      "label": "terminate_debug_session",
+      "command": "echo ${input:terminate_all_tasks}",
+      "type": "shell",
+      "problemMatcher": []
+    },
+    {
+      "label": "build_and_debug",
+      "dependsOn": [
+        "cleanup_build_folder",
+        "angular_serve",
+        "build_type_script",
+        "wait_angular_serve"
+      ],
+      "dependsOrder": "parallel",
+      "group": {
+        "kind": "build",
+        "isDefault": true
       }
     },
     {
-      "type": "npm",
-      "script": "test",
+      "label": "cleanup_build_folder",
+      "type": "shell",
+      "command": "yarn rimraf app/*",
+      "presentation": {
+        "group": "Debug",
+        "echo": false,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false
+      },
+    },
+    {
+      "label": "build_type_script",
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "group": "Debug",
+        "echo": false,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false
+      },
+      "command": "yarn tsc"
+    },
+    {
+      "label": "wait_angular_serve",
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "group": "Debug",
+        "echo": false,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false
+      },
+      "command": "yarn wait-on http-get://localhost:4200/"
+    },
+    {
+      "label": "angular_serve",
       "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
+      "type": "shell",
+      "command": "yarn ng serve",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "group": "Debug",
+        "echo": false,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false
+      },
+      "problemMatcher": [
+        {
+          "pattern": [
+            {
+              "regexp": ".",
+              "file": 1,
+              "location": 2,
+              "message": 3
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".",
+            "endsPattern": "."
           }
         }
-      }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "terminate_all_tasks",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "terminateAll"
     }
   ]
 }
