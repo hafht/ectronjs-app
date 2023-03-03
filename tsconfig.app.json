@@ -1,10 +1,9 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+  "compilerOptions": {
+    "module": "ES2022"
+  },
   "extends": "./tsconfig.json",
-  "files": [
-    "src/renderer/main.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "files": ["src/renderer/main.ts"],
+  "include": ["src/**/*.d.ts"]
 }
