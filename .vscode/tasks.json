@@ -16,19 +16,19 @@
         "isDefault": true
       }
     },
-    // {
-    //   "label": "cleanup_build_folder",
-    //   "type": "shell",
-    //   "command": "yarn rimraf app/*",
-    //   "presentation": {
-    //     "group": "Debug",
-    //     "echo": false,
-    //     "reveal": "never",
-    //     "focus": false,
-    //     "panel": "shared",
-    //     "showReuseMessage": false
-    //   }
-    // },
+    {
+      "label": "cleanup_build_folder",
+      "type": "shell",
+      "command": "yarn rimraf app/*",
+      "presentation": {
+        "group": "Debug",
+        "echo": false,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false
+      }
+    },
     {
       "label": "build_type_script",
       "type": "shell",

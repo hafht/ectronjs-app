@@ -18,6 +18,10 @@ module.exports = {
       },
       colors: {
         primary: '#3E82FB',
+        textBackColor: '#1B1A3D',
+      },
+      backgroundImage: {
+        'login-screen': "url('./assets/img/login-bg.jpg')",
       },
     },
   },

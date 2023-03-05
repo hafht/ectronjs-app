@@ -2,16 +2,26 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-body {
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  background-color: #ffffff;
-  letter-spacing: 0.01em;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  font-weight: 400;
-  cursor: default;
+/*
+* Global style 
+*/
+@layer base {
+  :root {
+    --color-primary: theme('colors.primary');
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #343434;
+    letter-spacing: 0.01em;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: normal;
+    cursor: default;
+    @apply text-white;
+  }
 }

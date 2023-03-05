@@ -4,9 +4,9 @@ import * as path from 'path';
 export class MainBrowser {
   static win: BrowserWindow;
   private static menu: Menu;
-  private static serve = process.argv.some(val => val === '--serve');
+  private static serve = process.argv.some((val) => val === '--serve');
 
-  static createWindow (ready?: () => void)  {
+  static createWindow(ready?: () => void) {
     console.time('createMainWindow');
 
     this.win = new BrowserWindow({
@@ -26,7 +26,7 @@ export class MainBrowser {
         // contextIsolation: false,
         // webviewTag: true,
         // backgroundThrottling: false,
-      }
+      },
     });
     if (this.serve) {
       this.win.loadURL('http://localhost:4200');

@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'template',
+    redirectTo: 'oauth',
     pathMatch: 'full',
   },
 ];
