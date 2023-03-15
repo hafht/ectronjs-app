@@ -6,6 +6,7 @@
     "renew-aws-session": "aws codeartifact login --tool npm --repository creativeforce --domain creativeforce --domain-owner 092392787187 --namespace @creative-force",
     "postinstall": "electron-builder install-app-deps",
     "tsc": "tsc --build tsconfig.main.json",
+    "tsc-prod": "tsc --build tsconfig.main.prod.json",
     "rimraf": "rimraf",
     "builder": "cd ../../lighthouseapp/builder && node index.js --app=kelvin",
     "publish-netcore-services": "yarn builder --action=publish-netcore-services --env=prod"
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "15.1.0",
     "@angular/platform-browser-dynamic": "15.1.0",
     "@angular/router": "15.1.0",
+    "electron-is-dev": "^2.0.0",
     "rxjs": "7.8.0",
     "tslib": "2.3.0",
     "zone.js": "0.12.0"

@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'oauth',
-    loadChildren: () => import('./oauth/oauth.module').then((m) => m.OauthModule),
+    loadChildren: () => import('./oauth/feature/oauth.module').then((m) => m.OauthModule),
   },
   {
     path: '',

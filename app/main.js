@@ -1,35 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const electron_1 = require("electron");
-const windows_1 = require("./main/windows");
-electron_1.app.whenReady().then(() => {
-    //TODO: check isSecondInstance
-    // Load loading browser
-    windows_1.loadingBrowser.createWindow(async () => {
-        // : send tracking
-        try {
-            //TODO: start up
-            windows_1.mainBrowser.createWindow(() => {
-                windows_1.loadingBrowser?.win?.destroy();
-            });
+const app_1 = require("./app/app");
+const electron_events_1 = require("./app/events/electron.events");
+const squirrel_events_1 = require("./app/events/squirrel.events");
+class Main {
+    static initialize() {
+        if (squirrel_events_1.default.handleEvents()) {
+            // squirrel event handled (except first run event) and app will exit in 1000ms, so don't do anything else
+            electron_1.app.quit();
         }
-        catch (error) {
-        }
-    });
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    electron_1.app.on('activate', () => {
-        if (electron_1.BrowserWindow.getAllWindows().length === 0) {
-            // TODO: load main browser
-        }
-    });
-});
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
-electron_1.app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        electron_1.app.quit();
     }
-});
+    static bootstrapApp() {
+        app_1.default.main(electron_1.app, electron_1.BrowserWindow);
+    }
+    static bootstrapAppEvents() {
+        electron_events_1.default.bootstrapElectronEvents();
+        // initialize auto updater service
+        if (!app_1.default.isDevelopmentMode()) {
+            // UpdateEvents.initAutoUpdateService();
+        }
+    }
+}
+exports.default = Main;
+Main.initialize();
+// bootstrap app
+Main.bootstrapApp();
+Main.bootstrapAppEvents();
 //# sourceMappingURL=main.js.map
