@@ -1,23 +1,27 @@
-<div class="relative h-screen flex flex-col bg-login-screen bg-top bg-cover bg-no-repeat">
-  <div class="flex items-center flex-shrink-0 justify-between h-[93px] mt-10 mb-0 ml-10">
-    <img class="w-[200px] h-20" src="../../assets/img/logo.svg">
-  </div>
-  <div class=" mt-[160px] flex-grow">
-    <h1 class="text-[65px] h-14 ml-10">Kelvin</h1>
-    <button type="submit"
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="relative h-screen flex flex-col bg-login-screen bg-top bg-cover bg-no-repeat">
+    <div class="flex items-center flex-shrink-0 justify-between h-[93px] mt-10 mb-0 ml-10">
+      <img class="w-[200px] h-20" src="../../assets/img/logo.svg">
+    </div>
+    <div class=" mt-[160px] flex-grow">
+      <h1 class="text-[72px] h-14 ml-10">Kelvin</h1>
+      <button
       class="h-[58.5px] absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[50%] w-[173px] rounded-[40px] text-[21px] self-center ml-auto mr-auto mb-[150px] bg-white text-textBackColor font-bold"
-    >
-      LogIn
-    </button>
+      type="submit"
+      (click)="login()"
+      >
+        LogIn
+      </button>
+    </div>
+    <div *ngIf="vm.loginMessage" class="px-[20px] py-[29px] left-0 bottom-20 w-full alert-danger">
+      <p>{{vm.loginMessage}}</p>
+    </div>
+    <div class="h-[77px] flex items-center justify-between bg-[#1B1A3D] text-sm pt-1 pr-6 pb-1 pl-7">
+      <p>
+        Copyright © 2023 Creative Force. All rights reserved.<br>
+        <a (click)="privacyAndPolicy()">Privacy Policy</a> | <a (click)="termOfService()">Terms of Services</a> | <a (click)="eula()">End User Licensing Agreement</a>
+      </p>
+      <p>Kelvin<br />Version {{vm.appVersion}}</p>
+    </div>
   </div>
-  <!-- <div class="px-[20px] py-[29px] left-0 bottom-20 w-full alert-danger">
-    <p>Login message!</p>
-  </div> -->
-  <div class="h-[77px] flex items-center justify-between bg-[#1B1A3D] text-sm pt-1 pr-6 pb-1 pl-7">
-    <p>
-      Copyright © 2023 Creative Force. All rights reserved.<br>
-      <a>Privacy Policy</a> | <a>Terms of Services</a> | <a>End User Licensing Agreement</a>
-    </p>
-    <p>Kelvin<br />Version 0.0.0</p>
-  </div>
-</div>
+</ng-container>

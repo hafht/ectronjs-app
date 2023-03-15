@@ -1,4 +1,4 @@
-import { BrowserWindow, shell } from 'electron';
+import { shell } from 'electron';
 import { LoadingBrowser, MainBrowser } from './windows';
 import * as isDev from 'electron-is-dev';
 
@@ -61,7 +61,7 @@ export default class App {
     }
   }
 
-  static main(app: Electron.App, browserWindow: typeof BrowserWindow) {
+  static main(app: Electron.App, browserWindow: typeof Electron.BrowserWindow) {
     App.BrowserWindow = browserWindow;
     App.application = app;
 

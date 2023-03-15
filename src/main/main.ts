@@ -26,7 +26,6 @@ export default class Main  {
 }
 
 Main.initialize();
-
 // bootstrap app
 Main.bootstrapApp();
 Main.bootstrapAppEvents();

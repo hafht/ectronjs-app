@@ -15,7 +15,7 @@ export class LoadingBrowser {
       frame: false,
       show: false,
       webPreferences: {
-        preload: path.join(__dirname, '../base/preload.js'),
+        preload: path.join(__dirname, '../api/main.preload.js'),
       },
     });
     const loadingFile = path.join(__dirname, '../../../resources/loading-page/loading.html');

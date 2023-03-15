@@ -1,9 +1,9 @@
-import { BrowserWindow, Menu, app, nativeImage } from 'electron';
+import { BrowserWindow, nativeImage } from 'electron';
 import * as path from 'path';
 
 export class MainBrowser {
-  static win: BrowserWindow;
-  private static menu: Menu;
+  static win: Electron.BrowserWindow;
+  private static menu: Electron.Menu;
   private static serve = process.argv.some((val) => val === '--serve');
 
   static createWindow(ready?: () => void) {
@@ -20,6 +20,7 @@ export class MainBrowser {
       icon: nativeImage.createFromPath(path.join(__dirname, '../../renderer/favicon.ico')),
       transparent: false,
       webPreferences: {
+        preload: path.join(__dirname, '../api/main.preload.js'),
         // webSecurity: false,
         // allowRunningInsecureContent: true,
         // nodeIntegration: true,
@@ -40,6 +41,7 @@ export class MainBrowser {
       }
       setTimeout(() => {
         this.win.show();
+        this.win.webContents.openDevTools();
       }, 50);
       console.timeEnd('createMainWindow');
     });
